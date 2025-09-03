@@ -5,13 +5,13 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class T03ManageWindowCommands {
+public class T03TestPositionAndSize {
     public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
 
         driver.navigate().to("https://www.amazon.com/");
-        Thread.sleep(2000);
+
 
 
         System.out.println("Current Position: " + driver.manage().window().getPosition());
@@ -21,7 +21,7 @@ public class T03ManageWindowCommands {
         Dimension expectedSize= new Dimension(800,600);
         driver.manage().window().setPosition(expectedPosition);
         driver.manage().window().setSize(expectedSize);
-        Thread.sleep(2000);
+
 
 
         Point actualPosition = driver.manage().window().getPosition();
@@ -36,7 +36,7 @@ public class T03ManageWindowCommands {
             System.out.println("Actual Size: " + actualSize);
             System.out.println("Expected Size: " + expectedSize);
         }
-        Thread.sleep(2000);
+
         driver.close();
 
     }
