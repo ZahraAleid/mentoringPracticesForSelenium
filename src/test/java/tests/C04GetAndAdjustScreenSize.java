@@ -34,7 +34,18 @@ public class C04GetAndAdjustScreenSize {
         driver.manage().window().setSize(expectedSize);
 
     // Test that the page is in the position and size you want. // Close the page.
+        Point actualPosition = driver.manage().window().getPosition();
+        Dimension actualSize = driver.manage().window().getSize();
 
+        if (actualSize.equals(expectedSize)&& actualPosition.equals(expectedPosition)){
+            System.out.println("Size and Position Test PASSED");
+        } else {
+            System.out.println("Size and Position Test FAILED");
+            System.out.println("Actual Position: " + actualPosition);
+            System.out.println("Expected Position: " + expectedPosition);
+            System.out.println("Actual Size: " + actualSize);
+            System.out.println("Expected Size: " + expectedSize);
+        }
 
 
 
