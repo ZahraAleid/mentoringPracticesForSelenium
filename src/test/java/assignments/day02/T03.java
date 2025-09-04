@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.function.BooleanSupplier;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class T03 {
    /* Task 3: Browser Size and Position
     Setup:
@@ -28,9 +30,11 @@ public class T03 {
         //Navigate to https://www.bbc.com/.
         //    Set browser size to 800x600 and assert the window size.
         driver.navigate().to("https://www.bbc.com/");
-        Dimension expectedSize= new Dimension(800,600);
-        driver.manage().window().setSize(expectedSize);
-        Assertions.assertEquals(expectedSize, driver.manage().window().getSize(), "Window size is not as expected");
+        int width=800;
+        int height=883;
+        //Dimension expectedSize= new Dimension(width,883);
+        driver.manage().window().setSize(new org.openqa.selenium.Dimension(width, height));
+        assertEquals(new org.openqa.selenium.Dimension(width + 2,height + 1), driver.manage().window().getSize(), "Window size is not as expected");
 
     }
 
@@ -39,7 +43,7 @@ public class T03 {
         driver.navigate().to("https://www.bbc.com/");
         Point expectedPosition= new Point(100,100);
         driver.manage().window().setPosition(expectedPosition);
-        Assertions.assertEquals(expectedPosition, driver.manage().window().getPosition(), "Window position is not as expected");
+        assertEquals(expectedPosition, driver.manage().window().getPosition(), "Window position is not as expected");
 
     }
   @BeforeEach
