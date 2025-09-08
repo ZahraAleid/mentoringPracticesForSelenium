@@ -96,7 +96,7 @@ public class C01XPathComparisonTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/");
-        //wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
 
     }
 
