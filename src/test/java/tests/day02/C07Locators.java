@@ -1,7 +1,5 @@
-package tests;
+package tests.day02;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
