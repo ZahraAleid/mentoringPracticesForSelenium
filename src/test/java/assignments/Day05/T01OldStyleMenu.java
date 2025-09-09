@@ -55,6 +55,7 @@ Close browser
 
     @AfterEach
     void tearDown(){
-        //driver.quit();
-    }}
+        driver.quit();
+    }
+}
 
