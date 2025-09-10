@@ -25,6 +25,7 @@ public class T04 extends TestBase {
         deleteStars(numberOfStarsToDelete);
         verifyStarsDeleted(numberOfStarsToAdd - numberOfStarsToDelete);
     }
+    //.
 
     void addStars(int count) {
         for (int i = 0; i < count; i++) {
