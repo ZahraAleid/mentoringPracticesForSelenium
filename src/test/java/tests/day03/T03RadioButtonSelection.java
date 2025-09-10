@@ -1,5 +1,4 @@
 package tests.day03;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,79 +7,69 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.time.Duration;
+import java.util.List;
 
 public class T03RadioButtonSelection {
-
-     /*
-    Task: Navigate to "https://demoqa.com/radio-button"
+    /*
+    Task: Navigate to "http://test.rubywatir.com/radios.php"
         . Create a test that:
 
-        Attempts to select each radio button (Yes, Impressive, No)
-        Prints whether each option is enabled/disabled
-        For enabled options, select them and verify selection
+        Attempts to select each radio buttonand verify it (click them all)
         Print confirmation message for each successful selection
+
     */
-
     WebDriver driver;
-
-    //String url = "https://demoqa.com/radio-button";
-    ChromeOptions options = new ChromeOptions();
+    String url = "http://test.rubywatir.com/radios.php";
 
     @Test
-    void test1() {
-        driver.get("http://test.rubywatir.com/radios.php");
-         //Prints whether each option is enabled/disabled
-        if (driver.findElement(By.xpath("//input[@value='Radio1']")).isEnabled()){
-            System.out.println("radio1 radio button is enabled.");
+    void radioButtonTest() {
+        driver.get(url);
+//        Attempts to select each radio button (Yes, Impressive, No)
+        By yesRadioButton = By.xpath("//p/input");
+        By impressiveRadioButton = By.xpath("(//p/input)[2]");
+        By noRadioButton = By.xpath("(//p/input)[3]");
 
-            driver.findElement(By.xpath("//input[@value='Radio1']")).click();
-            if (driver.findElement(By.xpath("//input[@value='Radio1']")).isSelected()){
-                System.out.println("radio1 radio button is selected.");
-            } else {
-                System.out.println("radio1 radio button is not selected.");
-            }
+        List<WebElement> checkBoxes = driver.findElements(yesRadioButton);
 
-
-        } else {
-            System.out.println("radio1  radio button is disabled.");
+        for (WebElement checkBox:checkBoxes){
+            checkBox.click();
+            Assertions.assertTrue(checkBox.isSelected());
         }
 
-        if (driver.findElement(By.xpath("//input[@value='Nope']")).isEnabled()){
-            System.out.println("radio2 radio button is enabled.");
-            driver.findElement(By.xpath("//input[@value='Nope']")).click();
-            if (driver.findElement(By.xpath("//input[@value='Nope']")).isSelected()){
-                System.out.println("radio 2 radio button is selected.");
-            } else {
-                System.out.println("radio 2 radio button is not selected.");
-            }
-        } else {
-            System.out.println("radio 2 radio button is disabled.");
-        }
 
-        if (driver.findElement(By.xpath("//input[@id='radioId']")).isEnabled()){
-            System.out.println("radio3 radio button is enabled.");
-            driver.findElement(By.xpath("//input[@id='radioId']")).click();
-            if (driver.findElement(By.xpath("//input[@id='radioId']")).isSelected()){
-                System.out.println("radio3 radio button is selected.");
-            } else {
-                System.out.println("radio3 radio button is not selected.");
-            }
+        driver.findElement(yesRadioButton).click();
+        System.out.println(driver.findElement(yesRadioButton).isSelected());
+        System.out.println(driver.findElement(impressiveRadioButton).isSelected());
+        System.out.println(driver.findElement(noRadioButton).isSelected());
 
 
 
-        }
+        driver.findElement(impressiveRadioButton).click();
+        System.out.println(driver.findElement(yesRadioButton).isSelected());
+        System.out.println(driver.findElement(impressiveRadioButton).isSelected());
+        System.out.println(driver.findElement(noRadioButton).isSelected());
 
+        driver.findElement(noRadioButton).click();
+        System.out.println(driver.findElement(yesRadioButton).isSelected());
+        System.out.println(driver.findElement(impressiveRadioButton).isSelected());
+        System.out.println(driver.findElement(noRadioButton).isSelected());
+
+//        Prints whether each option is enabled/disabled
+//        For enabled options, select them and verify selection
+//        Print confirmation message for each successful selection
     }
-        // Test steps will be implemented here
-     @BeforeEach
-     void setUp() {
-         driver = new ChromeDriver();
 
-     }
+    @BeforeEach
+    void setUp() {
+        driver= new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+    }
 
     @AfterEach
     void tearDown() {
-       // driver.quit();
+        driver.quit();
     }
 }
