@@ -37,8 +37,8 @@ import java.time.Duration;
         which keeps our code shorter, cleaner, and easier to maintain.
         */
 
-public abstract class TestBase {
-    protected WebDriver driver;
+public class TestBase {
+    public WebDriver driver;
     @BeforeEach
     void setUp() {
         driver= new ChromeDriver();
