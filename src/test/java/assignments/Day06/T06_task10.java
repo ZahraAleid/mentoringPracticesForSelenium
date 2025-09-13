@@ -56,6 +56,8 @@ public class T06_task10  {
         driver.findElement(By.id("objects")).sendKeys("Objects");
         driver.findElement(By.id("symbols")).sendKeys("symbols");
         driver.findElement(By.id("flags")).sendKeys("flags");
+        driver.findElement(By.id("hide")).sendKeys("hide");
+        driver.findElement(By.id("active")).sendKeys("active");
 
 
         driver.findElement(By.id("send")).click();
