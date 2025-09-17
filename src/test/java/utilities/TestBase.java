@@ -1,4 +1,4 @@
-package tests.utilities;
+package utilities;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -47,7 +47,7 @@ import java.time.format.DateTimeFormatter;
         */
 
 public class TestBase {
-    public WebDriver driver;
+    public static WebDriver driver;
     @BeforeEach
     void setUp() {
         driver= new ChromeDriver();
